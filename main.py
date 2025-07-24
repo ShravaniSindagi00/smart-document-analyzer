@@ -3,12 +3,23 @@
 import logging
 from ingestion import process_documents
 
-# New imports for this module
-from langchain_huggingface import HuggingFaceEmbeddings 
+from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
+
+# New imports for the generation module
+from transformers import pipeline
 
 # Set up basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
+def format_context(docs):
+    """Helper function to format the retrieved documents into a single string."""
+    context = ""
+    for i, doc in enumerate(docs):
+        context += f"--- Relevant Section {i+1} ---\n"
+        context += doc.page_content
+        context += "\n--------------------------\n\n"
+    return context
 
 def main():
     """
@@ -30,29 +41,43 @@ def main():
     logging.info(f"Successfully processed documents into {len(all_text_chunks)} chunks.")
     
     # --- 3.4 Information Retrieval Module ---
-
-    # 1. Integrate Embedding Model (WBS 3.4.1)
-    # We use a popular, efficient model from Hugging Face.
     logging.info("Initializing embedding model...")
     embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
-    # 2. Implement Vector Store Management (WBS 3.4.2)
-    # We create a ChromaDB vector store from the document chunks.
-    # This will automatically handle embedding each chunk and storing it.
     logging.info("Creating vector store from document chunks...")
     vector_store = Chroma.from_texts(texts=all_text_chunks, embedding=embedding_model)
 
-    # 3. Code Semantic Search Function (WBS 3.4.3)
-    # We perform a similarity search to find the most relevant chunks.
     logging.info("Performing semantic search...")
     relevant_docs = vector_store.similarity_search(search_query)
 
-    # --- Display Results ---
-    logging.info(f"\nFound {len(relevant_docs)} relevant document sections:")
-    for i, doc in enumerate(relevant_docs):
-        print(f"\n--- Relevant Section {i+1} ---")
-        print(doc.page_content)
-        print("--------------------------")
+    # --- 3.5 Reranking & Generation Module ---
+    
+    # 1. Prepare context and build the prompt
+    context = format_context(relevant_docs)
+    prompt_template = f"""
+    You are a helpful assistant for a {user_role}. Your task is to answer the user's question based *only* on the provided context.
+    
+    User's Goal: {user_goal}
+
+    Context from documents:
+    {context}
+    
+    Based on the context above, please provide a concise answer to help the user achieve their goal.
+    Answer:
+    """
+    
+    # 2. Integrate LLM and generate the final answer
+    logging.info("Initializing text generation model...")
+    # Using a smaller, efficient model for local execution
+    generator = pipeline('text-generation', model='distilgpt2')
+
+    logging.info("Generating final answer...")
+    final_answer = generator(prompt_template, max_length=500, num_return_sequences=1)
+
+    # --- Display Final Answer ---
+    print("\n\n✅ ================== FINAL ANSWER ================== ✅")
+    print(final_answer[0]['generated_text'])
+    print("========================================================")
 
 
 if __name__ == '__main__':
