@@ -1,57 +1,77 @@
-🚀 Smart Document Analyzer
-Adobe India Hackathon 2025 - "Connecting the Dots"
-Challenge Solution: Round 1 (Integrated 1A & 1B)
-This project is a comprehensive and intelligent solution for Round 1 of the "Connecting the Dots" challenge. It moves beyond a simple search tool by fully integrating the structural analysis of Round 1A with the persona-driven intelligence of Round 1B.
-Our system first understands the high-level structure of a document collection and then uses that context to perform a highly relevant, targeted analysis, embodying the hackathon's theme of "Connecting the Dots" to surface meaningful insights.
+Here’s a cleaner, more concise, and professional-style `README.md` without emojis or bullet-heavy formatting — more suitable for submissions like Adobe’s Hackathon:
 
+---
 
-✨ Core Features & Innovations
-"Connected Dots" Architecture: Our key innovation is a two-stage search pipeline. The system first leverages the structured outlines from Round 1A to identify the most relevant major sections (e.g., chapters or headings). It then performs a detailed semantic search (Round 1B) only within these pre-qualified sections, resulting in significantly faster and more accurate results.
-Persona-Driven Intelligence: The analysis is tailored to a specific user persona and their "job-to-be-done," ensuring the extracted sections are not just relevant to the query, but also to the user's unique perspective.
-End-to-End RAG Pipeline: Implements a complete Retrieval-Augmented Generation (RAG) pipeline using a local, offline-first technology stack.
-Precise Source Tracking: Every extracted section is meticulously tracked, providing the exact source document and page number for full traceability.
-Submission-Ready: The entire application is containerized with Docker, ensuring a secure, reproducible, and easy-to-run solution that meets all hackathon submission requirements.
+# Smart Document Analyzer – Adobe India Hackathon 2025
 
+**Round 1A & 1B Integrated Solution – "Connecting the Dots"**
 
-🛠️ Technology Stack
-Language: Python 3.10
+This project provides a unified and intelligent solution for Adobe’s “Connecting the Dots” Hackathon challenge. It combines document structural understanding (Round 1A) with persona-driven contextual search (Round 1B) to deliver meaningful and accurate results tailored to user intent.
 
-PDF Processing:
+## Overview
 
-PyMuPDF: For high-performance text extraction.
+Our system goes beyond keyword search. It first analyzes the document’s high-level structure to extract key sections (like chapters or headings). Then, it performs semantic search only within those relevant segments — ensuring speed, precision, and alignment with user goals.
 
-Pytesseract: For OCR capabilities.
+This two-stage, retrieval-augmented system is containerized for easy deployment, runs offline, and meets all hackathon constraints.
 
-AI Framework:
+## Key Features
 
-LangChain: For orchestrating the core RAG pipeline.
+* **Two-Stage Search Pipeline**
+  The system first identifies major document sections using structural analysis (Round 1A), then applies semantic search (Round 1B) within these regions.
 
-Hugging Face Transformers: For local, on-device AI models.
+* **Persona-Centric Output**
+  Responses are customized based on the user’s persona and specific goals (e.g., a student preparing for an exam).
 
-AI Models:
-all-MiniLM-L6-v2: As the sentence-transformer for semantic search embeddings.
-Vector Database:
-ChromaDB: For efficient, in-memory vector storage and similarity search.
+* **End-to-End RAG Pipeline**
+  Fully local, Retrieval-Augmented Generation pipeline powered by LangChain and HuggingFace Transformers.
 
+* **Precise Traceability**
+  Each result includes exact document source and page number for full transparency.
 
-⚙️ How to Build and Run
-Prerequisites:
-Docker must be installed and running.
+* **Dockerized Execution**
+  Secure, portable, and reproducible setup using Docker.
 
+## Tech Stack
 
-1. Place Input PDFs
-Add your collection of 3-10 PDF documents into the /input directory at the project's root.
+* **Language**: Python 3.10
+* **PDF Processing**: PyMuPDF (text extraction), Pytesseract (OCR)
+* **RAG Orchestration**: LangChain
+* **Embeddings**: `all-MiniLM-L6-v2` (from Hugging Face)
+* **Vector DB**: ChromaDB
+* **Containerization**: Docker
 
+## How to Use
 
-2. Build the Docker Image
-From the project's root directory, execute the following command in your terminal:
+### 1. Prerequisites
+
+* Install Docker and ensure it is running.
+
+### 2. Add Input PDFs
+
+Place 3–10 PDF files in the `/input` folder at the root of the project.
+
+### 3. Build the Docker Image
+
+```bash
 docker build --platform linux/amd64 -t smart-analyzer-integrated:latest .
+```
 
+### 4. Run the Application
 
-
-3. Run the Application
-Once the image is built, run the container with this command. It will mount the necessary folders, process the PDFs, and generate the final output.
+```bash
 docker run --rm -v ./input:/app/input -v ./output:/app/output smart-analyzer-integrated:latest
+```
 
-4. View the Result
-After the container finishes, a new file, output.json, will be created in the /output directory. This file contains the ranked list of relevant sections, formatted according to the hackathon specification.
+### 5. View Output
+
+After processing, the results will be saved to:
+
+```
+/output/output.json
+```
+
+This file contains a list of relevant document sections based on the query and user persona, with source details.
+
+---
+
+Let me know if you want to include a "Project Structure" or "Example Output" section as well.
