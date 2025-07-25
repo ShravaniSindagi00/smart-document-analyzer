@@ -74,4 +74,3 @@ This file contains a list of relevant document sections based on the query and u
 
 ---
 
-Let me know if you want to include a "Project Structure" or "Example Output" section as well.
