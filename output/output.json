@@ -7,7 +7,42 @@
         ],
         "persona": "Investment Analyst",
         "job_to_be_done": "Analyze revenue trends, R&D investments, and market positioning strategies",
-        "processing_timestamp": "2025-07-25T13:34:28.348921"
+        "processing_timestamp": "2025-07-25T16:38:09.785557",
+        "connected_dots_strategy": {
+            "description": "Used Round 1A outlines to first find relevant major sections before performing a detailed search.",
+            "top_sections_found": [
+                {
+                    "source_doc": "PRD.pdf",
+                    "level": "H1",
+                    "text": "2. Objectives & Goals",
+                    "page": 1
+                },
+                {
+                    "text": "databases",
+                    "level": "H1",
+                    "source_doc": "cc.pdf",
+                    "page": 3
+                },
+                {
+                    "page": 9,
+                    "source_doc": "cc.pdf",
+                    "level": "H1",
+                    "text": "Enterprise software solutions"
+                },
+                {
+                    "source_doc": "cc.pdf",
+                    "text": "technologies",
+                    "page": 3,
+                    "level": "H1"
+                },
+                {
+                    "source_doc": "cc.pdf",
+                    "text": "3. Development Flow in GAE",
+                    "level": "H1",
+                    "page": 6
+                }
+            ]
+        }
     },
     "extracted_sections": [
         {
@@ -74,11 +109,11 @@
             "section_title": "flow is calculated as GAAP net cash provided by operating activities less both purchases related to ..."
         },
         {
-            "document": "NVIDIAAn.pdf",
-            "page_number": 5,
+            "document": "Unknown",
+            "page_number": 1,
             "importance_rank": 10,
-            "refined_text": "28, April 30, 2024 2023 Cash flows from operating activities: Net income $ 14,881 $ 2,043 Adjustments to reconcile net income to net cash provided by operating activities: Stock-based compensation expense 1,011 735 Depreciation and amortization 410 384 Realized and unrealized (gains) losses on investments in non-affiliated entities, net (69) 14 Deferred income taxes (1,577) (1,135)",
-            "section_title": "28, April 30, 2024 2023 Cash flows from operating activities: Net income $ 14,881 $ 2,043 Adjustment..."
+            "refined_text": "2. Objectives & Goals",
+            "section_title": "2. Objectives & Goals..."
         }
     ]
 }
