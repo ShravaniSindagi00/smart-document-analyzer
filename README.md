@@ -1,6 +1,3 @@
-Here’s a cleaner, more concise, and professional-style `README.md` without emojis or bullet-heavy formatting — more suitable for submissions like Adobe’s Hackathon:
-
----
 
 # Smart Document Analyzer – Adobe India Hackathon 2025
 
