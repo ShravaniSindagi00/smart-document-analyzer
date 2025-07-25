@@ -37,27 +37,21 @@ ChromaDB: For efficient, in-memory vector storage and similarity search.
 ⚙️ How to Build and Run
 Prerequisites:
 Docker must be installed and running.
-=======
+
 
 1. Place Input PDFs
 Add your collection of 3-10 PDF documents into the /input directory at the project's root.
 
->>>>>>> 83b09ff1aaa4af55f35300c802ca74da1158a9bb
+
 2. Build the Docker Image
 From the project's root directory, execute the following command in your terminal:
 docker build --platform linux/amd64 -t smart-analyzer-integrated:latest .
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 83b09ff1aaa4af55f35300c802ca74da1158a9bb
+
 3. Run the Application
 Once the image is built, run the container with this command. It will mount the necessary folders, process the PDFs, and generate the final output.
 docker run --rm -v ./input:/app/input -v ./output:/app/output smart-analyzer-integrated:latest
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 83b09ff1aaa4af55f35300c802ca74da1158a9bb
 4. View the Result
 After the container finishes, a new file, output.json, will be created in the /output directory. This file contains the ranked list of relevant sections, formatted according to the hackathon specification.
