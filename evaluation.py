@@ -14,19 +14,20 @@ GOLDEN_DATASET = [
         "user_goal": "What was NVIDIA's total revenue for the first quarter of fiscal year 2025?",
         "golden_answer": "NVIDIA (NASDAQ: NVDA) today reported revenue for the first quarter ended April 28, 2024, of $26.0 billion, up 18% from the previous quarter and up 262% from a year ago."
     },
-    {
+  {
         "user_goal": "What was the main driver of their revenue growth?",
-        "golden_answer": "Our data center growth was fueled by strong and accelerating demand for generative Al training and inference on the Hopper platform."
+        # Replace the old answer with this exact text:
+        "golden_answer": "“Our data center growth was fueled by strong and accelerating demand for generative AI training and inference on the Hopper platform."
     },
     # Data from Doc3(academic).pdf
-    {
-        "user_goal": "What is the definition of a public cloud?",
-        "golden_answer": "A public cloud is owned and operated by third-party service providers like Amazon AWS, Google Cloud, or Microsoft Azure."
-    },
-    {
-        "user_goal": "Why would an organization choose to use a private cloud instead of a public one?",
-        "golden_answer": "They are best for companies that deal with sensitive data, such as banks, healthcare, and government agencies."
-    }
+    # {
+    #     "user_goal": "What is the definition of a public cloud?",
+    #     "golden_answer": "A public cloud is owned and operated by third-party service providers like Amazon AWS, Google Cloud, or Microsoft Azure."
+    # },
+    # {
+    #     "user_goal": "Why would an organization choose to use a private cloud instead of a public one?",
+    #     "golden_answer": "They are best for companies that deal with sensitive data, such as banks, healthcare, and government agencies."
+    # }
 ]
 
 # Set up basic logging

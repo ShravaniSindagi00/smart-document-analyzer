@@ -2,7 +2,7 @@
 
 import os
 import re
-from pypdf import PdfReader
+import fitz  # The PyMuPDF library
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 import logging
 
@@ -10,17 +10,16 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def extract_text_from_pdf(pdf_path):
-    """Opens a PDF file and extracts the text from all pages."""
+    """Opens a PDF file and extracts the text from all pages using PyMuPDF."""
     try:
-        pdf_reader = PdfReader(pdf_path)
+        doc = fitz.open(pdf_path)
         text = ""
-        for page in pdf_reader.pages:
-            extracted_page_text = page.extract_text()
-            if extracted_page_text:
-                text += extracted_page_text
+        for page in doc:
+            text += page.get_text()
+        doc.close()
         return text
     except Exception as e:
-        logging.error(f"Failed to read text from {pdf_path}: {e}")
+        logging.error(f"Failed to read text from {pdf_path} with PyMuPDF: {e}")
         return None
 
 def clean_text(text):
@@ -53,30 +52,14 @@ def process_documents(document_directory="documents"):
         if filename.lower().endswith(".pdf"):
             file_path = os.path.join(document_directory, filename)
             logging.info(f"Processing {file_path}...")
-            
-            # 1. Extract
+
             raw_text = extract_text_from_pdf(file_path)
             if not raw_text:
                 continue
-            
-            # 2. Clean
+
             cleaned_text = clean_text(raw_text)
-            
-            # 3. Chunk
             chunks = chunk_text(cleaned_text)
             all_chunks.extend(chunks)
             logging.info(f"Created {len(chunks)} chunks from {filename}.")
-            
+
     return all_chunks
-
-
-# --- Main execution block to test the functions ---
-if __name__ == '__main__':
-    all_text_chunks = process_documents()
-    
-    if all_text_chunks:
-        logging.info(f"\nTotal chunks created from all documents: {len(all_text_chunks)}")
-        # Optional: Print the first chunk to see the result
-        print("\n--- Example Chunk ---")
-        print(all_text_chunks[0])
-        print("---------------------")
