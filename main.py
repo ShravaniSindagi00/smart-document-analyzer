@@ -1,83 +1,92 @@
-# main.py
+# main.py (v3 - Final JSON Output)
 
+import os
+import json
 import logging
-from ingestion import process_documents
+import datetime
+from ingestion import process_documents # Our upgraded ingestion script
 
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import Chroma
 
-# New imports for the generation module
-from transformers import pipeline
-
 # Set up basic logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-def format_context(docs):
-    """Helper function to format the retrieved documents into a single string."""
-    context = ""
-    for i, doc in enumerate(docs):
-        context += f"--- Relevant Section {i+1} ---\n"
-        context += doc.page_content
-        context += "\n--------------------------\n\n"
-    return context
-
 def main():
     """
-    Main function to run the smart document analyzer.
+    Main function to run the smart document analyzer and generate JSON output.
     """
-    # --- 3.3 User Input & Query Processing ---
-    user_role = "a business analyst"
-    user_goal = "find the latest research on company profits"
-    search_query = f"As {user_role}, I need to {user_goal}."
-    logging.info(f"Transformed user input into search query: '{search_query}'")
+    # --- User Input & Query Processing ---
+    # These would come from the hackathon's test case runner
+    user_role = "Investment Analyst"
+    user_goal = "Analyze revenue trends, R&D investments, and market positioning strategies"
+    search_query = f"As a {user_role}, I need to {user_goal}."
+    
+    input_documents = [f for f in os.listdir("documents") if f.endswith('.pdf')]
 
-    # --- 3.2 Data Ingestion & Preprocessing ---
-    logging.info("Starting document ingestion and processing...")
-    all_text_chunks = process_documents()
+    logging.info("Starting document analysis...")
+    logging.info(f"User Role: {user_role}")
+    logging.info(f"User Goal: {user_goal}")
+    
+    # --- Data Ingestion & Preprocessing ---
+    # This now returns a list of DocumentChunk objects with metadata
+    all_chunks = process_documents()
 
-    if not all_text_chunks:
+    if not all_chunks:
         logging.warning("No documents processed. Exiting.")
         return
-    logging.info(f"Successfully processed documents into {len(all_text_chunks)} chunks.")
+    logging.info(f"Successfully processed {len(input_documents)} documents into {len(all_chunks)} chunks.")
     
-    # --- 3.4 Information Retrieval Module ---
+    # --- Information Retrieval Module ---
+    # We now pass the page_content of our objects to the vector store
+    chunk_texts = [chunk.page_content for chunk in all_chunks]
+    
     logging.info("Initializing embedding model...")
     embedding_model = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
     
-    logging.info("Creating vector store from document chunks...")
-    vector_store = Chroma.from_texts(texts=all_text_chunks, embedding=embedding_model)
+    logging.info("Creating vector store...")
+    # The vector store needs the metadata to be attached to the texts
+    vector_store = Chroma.from_texts(
+        texts=chunk_texts, 
+        embedding=embedding_model,
+        # We pass the metadata from our DocumentChunk objects here
+        metadatas=[chunk.metadata for chunk in all_chunks] 
+    )
 
     logging.info("Performing semantic search...")
-    relevant_docs = vector_store.similarity_search(search_query)
+    # The search will now return documents with our attached metadata
+    relevant_docs = vector_store.similarity_search(search_query, k=10) # Get top 10 relevant chunks
 
-    # --- 3.5 Reranking & Generation Module ---
-    
-    # 1. Prepare context and build the prompt
-    context = format_context(relevant_docs)
-    prompt_template = f"""
-    You are a helpful assistant for a {user_role}. Your task is to answer the user's question based *only* on the provided context.
-    
-    User's Goal: {user_goal}
+    # --- Generate JSON Output ---
+    logging.info("Formatting output into required JSON structure...")
 
-    Context from documents:
-    {context}
-    
-    Based on the context above, please provide a concise answer to help the user achieve their goal.
-    Answer:
-    """
-    
-    # 2. Integrate LLM and generate the final answer
-    logging.info("Initializing text generation model...")
-    # Using a smaller, efficient model for local execution
-    generator = pipeline('text-generation', model='distilgpt2')
+    output_data = {
+        "metadata": {
+            "input_documents": input_documents,
+            "persona": user_role,
+            "job_to_be_done": user_goal,
+            "processing_timestamp": datetime.datetime.now().isoformat()
+        },
+        "extracted_sections": []
+    }
 
-    logging.info("Generating final answer...")
-    final_answer = generator(prompt_template, max_length=500, num_return_sequences=1)
+    for i, doc in enumerate(relevant_docs):
+        section = {
+            "document": doc.metadata.get("source", "Unknown"),
+            "page_number": doc.metadata.get("page", -1),
+            "importance_rank": i + 1,
+            "refined_text": doc.page_content,
+            # For this round, we can consider the refined text as the "section title"
+            "section_title": doc.page_content[:100] + "..." # Truncate for a title
+        }
+        output_data["extracted_sections"].append(section)
 
-    # --- Display Final Answer ---
-    print("\n\n✅ ================== FINAL ANSWER ================== ✅")
-    print(final_answer[0]['generated_text'])
-    print("========================================================")
+    # Write the output to a JSON file
+    output_filename = "output.json"
+    with open(output_filename, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=4)
+
+    logging.info(f"✅✅✅ Success! Output written to {output_filename} ✅✅✅")
 
 
 if __name__ == '__main__':

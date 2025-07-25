@@ -1,0 +1,84 @@
+{
+    "metadata": {
+        "input_documents": [
+            "cc.pdf",
+            "NVIDIAAn.pdf",
+            "PRD.pdf"
+        ],
+        "persona": "Investment Analyst",
+        "job_to_be_done": "Analyze revenue trends, R&D investments, and market positioning strategies",
+        "processing_timestamp": "2025-07-25T13:34:28.348921"
+    },
+    "extracted_sections": [
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 1,
+            "importance_rank": 1,
+            "refined_text": "NVIDIA Announces Financial Results for First Quarter Fiscal 2025 Record quarterly revenue of $26.0 billion, up 18% from Q4 and up 262% from a year ago Record quarterly Data Center revenue of $22.6 billion, up 23% from Q4 and up 427% from a year ago Ten-for-one forward stock split effective June 7, 2024 Quarterly cash dividend raised 150% to $0.01 per share on a post-split basis NVIDIA (NASDAQ: NVDA) today reported revenue for the first quarter ended April 28, 2024, of $26.0 billion, up 18% from the previous quarter and up 262% from a year ago. For the quarter, GAAP earnings per diluted share was $5.98, up 21% from the previous quarter and up 629% from a year ago. Non-GAAP earnings per diluted share was $6.12, up 19% from the previous quarter and up 461% from a year ago. \u201cThe next industrial revolution has begun \u2014 companies and countries are partnering with NVIDIA to shift the trillion-dollar traditional data centers to accelerated computing and build a new type of data center \u2014 AI",
+            "section_title": "NVIDIA Announces Financial Results for First Quarter Fiscal 2025 Record quarterly revenue of $26.0 b..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 1,
+            "importance_rank": 2,
+            "refined_text": "Up 18% Up 262% Gross margin 78.4% 76.0% 64.6% Up 2.4 pts Up 13.8 pts Operating expenses $3,497 $3,176 $2,508 Up 10% Up 39% Operating income $16,909 $13,615 $2,140 Up 24% Up 690% Net income $14,881 $12,285 $2,043 Up 21% Up 628% Diluted earnings per share $5.98 $4.93 $0.82 Up 21% Up 629%",
+            "section_title": "Up 18% Up 262% Gross margin 78.4% 76.0% 64.6% Up 2.4 pts Up 13.8 pts Operating expenses $3,497 $3,17..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 6,
+            "importance_rank": 3,
+            "refined_text": "activities: Proceeds related to employee stock plans 285 246 Payments related to repurchases of common stock (7,740) - Payments related to tax on restricted stock units (1,752) (507) Dividends paid (98) (99) Principal payments on property and equipment and intangible assets (40) (20) Net cash used in financing activities (9,345) (380) Change in cash and cash equivalents 307 1,690 Cash and cash equivalents at beginning of period 7,280 3,389 Cash and cash equivalents at end of period $ 7,587 $ 5,079 NVIDIA CORPORATION RECONCILIATION OF GAAP TO NON-GAAP FINANCIAL MEASURES (In millions, except per share data) (Unaudited) Three Months Ended April 28, January 28, April 30, 2024 2024 2023 GAAP gross profit $ 20,406 $ 16,791 $ 4,648 GAAP gross margin 78.4% 76.0% 64.6% Acquisition-related and other costs (A) 119 119 119 Stock-based compensation expense (B) 36 45 27",
+            "section_title": "activities: Proceeds related to employee stock plans 285 246 Payments related to repurchases of comm..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 3,
+            "importance_rank": 4,
+            "refined_text": "available at https://investor.nvidia.com. Conference Call and Webcast Information NVIDIA will conduct a conference call with analysts and investors to discuss its first quarter fiscal 2025 financial results and current financial prospects today at 2 p.m. Pacific time (5 p.m. Eastern time). A live webcast (listen-only mode) of the conference call will be accessible at NVIDIA\u2019s investor relations website, https://investor.nvidia.com. The webcast will be recorded and available for replay until NVIDIA\u2019s conference call to discuss its financial results for its second quarter of fiscal 2025. Non-GAAP Measures To supplement NVIDIA\u2019s condensed consolidated financial statements presented in accordance with GAAP, the company uses non-GAAP measures of certain components of financial performance. These non-GAAP measures include non-GAAP gross profit, non-GAAP gross margin, non-GAAP operating expenses, non-GAAP income from operations, non-GAAP other income (expense), net, non-GAAP net income,",
+            "section_title": "available at https://investor.nvidia.com. Conference Call and Webcast Information NVIDIA will conduc..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 2,
+            "importance_rank": 5,
+            "refined_text": "Non-GAAP ($ in millions, except earnings per share) Q1 FY25 Q4 FY24 Q1 FY24 Q/Q Y/Y Revenue $26,044 $22,103 $7,192 Up 18% Up 262% Gross margin 78.9% 76.7% 66.8% Up 2.2 pts Up 12.1 pts Operating expenses $2,501 $2,210 $1,750 Up 13% Up 43% Operating income $18,059 $14,749 $3,052 Up 22% Up 492% Net income $15,238 $12,839 $2,713 Up 19% Up 462% Diluted earnings per share $6.12 $5.16 $1.09 Up 19% Up 461% Outlook NVIDIA\u2019s outlook for the second quarter of fiscal 2025 is as follows: Revenue is expected to be $28.0 billion, plus or minus 2%. GAAP and non-GAAP gross margins are expected to be 74.8% and 75.5%, respectively, plus or minus 50 basis points. For the full year, gross margins are expected to be in the mid-70% range. GAAP and non-GAAP operating expenses are expected to be approximately $4.0 billion and $2.8 billion, respectively. Full-year operating expenses are expected to grow in the low-40% range. GAAP and non-GAAP other income and expense are expected to be an income of",
+            "section_title": "Non-GAAP ($ in millions, except earnings per share) Q1 FY25 Q4 FY24 Q1 FY24 Q/Q Y/Y Revenue $26,044 ..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 8,
+            "importance_rank": 6,
+            "refined_text": "April 28, January 28, April 30, 2024 2024 2023 Cost of revenue $ 119 $ 119 $ 119 Research and development $ 12 $ 12 $ 12 Sales, general and administrative $ 8 $ 6 $ 42 (B) Stock-based compensation consists of the following: Three Months Ended April 28, January 28, April 30, 2024 2024 2023 Cost of revenue $ 36 $ 45 $ 27 Research and development $ 727 $ 706 $ 524 Sales, general and administrative $ 248 $ 242 $ 184 (C) Other consists of IP-related costs and assets held for sale related adjustments. (D) Income tax impact of non-GAAP adjustments, including the recognition of excess tax benefits or deficiencies related to stock-based compensation under GAAP accounting standard (ASU 2016-09). NVIDIA CORPORATION RECONCILIATION OF GAAP TO NON-GAAP OUTLOOK Q2 FY2025 Outlook ($ in millions) GAAP gross margin 74.8% Impact of stock-based compensation expense, acquisition-related costs, and other costs 0.7% Non-GAAP gross margin 75.5% GAAP operating expenses $ 3,950 Stock-based compensation expense,",
+            "section_title": "April 28, January 28, April 30, 2024 2024 2023 Cost of revenue $ 119 $ 119 $ 119 Research and develo..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 6,
+            "importance_rank": 7,
+            "refined_text": "Other (145) (34) Changes in operating assets and liabilities, net of acquisitions: Accounts receivable (2,366) (252) Inventories (577) 566 Prepaid expenses and other assets (726) (215) Accounts payable (22) 11 Accrued and other current liabilities 4,202 689 Other long-term liabilities 323 105 Net cash provided by operating activities 15,345 2,911 Cash flows from investing activities: Proceeds from maturities of marketable securities 4,004 2,512 Proceeds from sales of marketable securities 149 - Purchases of marketable securities (9,303) (2,801) Purchase related to property and equipment and intangible assets (369) (248) Acquisitions, net of cash acquired (39) (83) Investments in non-affiliated entities (135) (221) Net cash used in investing activities (5,693) (841) Cash flows from financing activities: Proceeds related to employee stock plans 285 246 Payments related to repurchases of common stock (7,740) - Payments related to tax on restricted stock units (1,752) (507) Dividends paid",
+            "section_title": "Other (145) (34) Changes in operating assets and liabilities, net of acquisitions: Accounts receivab..."
+        },
+        {
+            "document": "PRD.pdf",
+            "page_number": 7,
+            "importance_rank": 8,
+            "refined_text": "\u2013 As a student, I want to be able to take a formal \u201cTest Quiz\u201d for a chosen topic, consisting of a set number of questions (e.g., 20) with a time limit, so I can experience a real-time testing environment and assess my overall knowledge under pressure. \u2013 As a student, after completing a Test Quiz, I want to receive a comprehensive report that shows my score, the questions, my answers, and the correct answers, so I can understand my performance. \u2013 As a student, along with my Test Quiz report, I want to see an analysis of my weaker sections or concepts based on my test performance, so I know which areas to focus on for improvement, and I want this analysis to be saved in my profile. \u2022 US4: Progress Tracking & Guidance \u2013 As a student, I want to access a visual dashboard in my profile that clearly shows my progress in each topic for the Quiz+Learning mode (including current level) and a separate section for my Test Quiz history and analysis reports. \u2013 As a student, upon reaching a certain",
+            "section_title": "\u2013 As a student, I want to be able to take a formal \u201cTest Quiz\u201d for a chosen topic, consisting of a s..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 3,
+            "importance_rank": 9,
+            "refined_text": "flow is calculated as GAAP net cash provided by operating activities less both purchases related to property and equipment and intangible assets and principal payments on property and equipment and intangible assets. NVIDIA believes the presentation of its non-GAAP financial measures enhances the user\u2019s overall understanding of the company\u2019s historical financial performance. The presentation of the company\u2019s non-GAAP financial measures is not meant to be considered in isolation or as a substitute for the company\u2019s financial results prepared in accordance with GAAP, and the company\u2019s non-GAAP measures may be different from non-GAAP measures used by other companies. NVIDIA CORPORATION CONDENSED CONSOLIDATED STATEMENTS OF INCOME (In millions, except per share data) (Unaudited) Three Months Ended April 28, April 30, 2024 2023 Revenue $ 26,044 $ 7,192 Cost of revenue 5,638 2,544",
+            "section_title": "flow is calculated as GAAP net cash provided by operating activities less both purchases related to ..."
+        },
+        {
+            "document": "NVIDIAAn.pdf",
+            "page_number": 5,
+            "importance_rank": 10,
+            "refined_text": "28, April 30, 2024 2023 Cash flows from operating activities: Net income $ 14,881 $ 2,043 Adjustments to reconcile net income to net cash provided by operating activities: Stock-based compensation expense 1,011 735 Depreciation and amortization 410 384 Realized and unrealized (gains) losses on investments in non-affiliated entities, net (69) 14 Deferred income taxes (1,577) (1,135)",
+            "section_title": "28, April 30, 2024 2023 Cash flows from operating activities: Net income $ 14,881 $ 2,043 Adjustment..."
+        }
+    ]
+}
